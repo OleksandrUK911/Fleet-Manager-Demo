@@ -115,11 +115,11 @@ app.include_router(geofence_router.router, prefix="/api")
 
 _CSP = (
     "default-src 'self'; "
-    "script-src 'self' 'unsafe-inline'; "                              # Swagger UI requires inline scripts
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; "
-    "font-src 'self' https://fonts.gstatic.com; "
+    "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; "  # Swagger UI CDN
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://unpkg.com; "
+    "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; "
     "img-src 'self' data: blob: https://*.tile.openstreetmap.org https://*.tile.openstreetmap.fr; "
-    "connect-src 'self' ws://localhost:7767 ws://fleet-manager-demo.skakun-ml.com wss://fleet-manager-demo.skakun-ml.com wss:; "
+    "connect-src 'self' ws: wss:; "
     "frame-ancestors 'none'; "
     "base-uri 'self'; "
     "form-action 'self';"
