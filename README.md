@@ -2,17 +2,28 @@
 
 ![CI](https://github.com/OleksandrUK911/Fleet-Manager-Demo/actions/workflows/ci.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python 3.13](https://img.shields.io/badge/Python-3.13-3776ab?logo=python&logoColor=white)](https://www.python.org/)
+[![Python 3.12](https://img.shields.io/badge/Python-3.12-3776ab?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![React 18](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![Tests](https://img.shields.io/badge/tests-62%20passed-brightgreen)](backend/tests/)
+[![Tests](https://img.shields.io/badge/tests-74%20passed-brightgreen)](backend/tests/)
 
 > A full-stack web application for **real-time and historical fleet vehicle tracking** on an interactive map.
 
-**Live Demo:** [https://oleksandruk911.github.io/Fleet-Manager-Demo/app/](https://oleksandruk911.github.io/Fleet-Manager-Demo/app/) _(admin panel — Railway)_
-**Promo Site:** [https://oleksandruk911.github.io/Fleet-Manager-Demo/](https://oleksandruk911.github.io/Fleet-Manager-Demo/) _(landing page — GitHub Pages)_
-**GitHub:** [OleksandrUK911/Fleet-Manager-Demo](https://github.com/OleksandrUK911/Fleet-Manager-Demo)
-**Tech Stack:** FastAPI · SQLite/MySQL · React · Material UI · Leaflet · WebSocket
+## 🔗 Links
+
+| | URL |
+|---|---|
+| 🌐 **Landing page** | [oleksandruk911.github.io/Fleet-Manager-Demo](https://oleksandruk911.github.io/Fleet-Manager-Demo/) |
+| 🚀 **Live Admin Panel** | [fleet-manager-demo.up.railway.app/app](https://fleet-manager-demo.up.railway.app/app) |
+| 📖 **API Docs** (Swagger) | [fleet-manager-demo.up.railway.app/api/docs](https://fleet-manager-demo.up.railway.app/api/docs) |
+| 💻 **Source Code** | [github.com/OleksandrUK911/Fleet-Manager-Demo](https://github.com/OleksandrUK911/Fleet-Manager-Demo) |
+
+## 🔑 Demo Credentials
+
+| Role | Username | Password | Access |
+|---|---|---|---|
+| **Admin** | `admin` | `fleet2024` | Full CRUD — add/edit/delete vehicles |
+| **Viewer** | `viewer` | `viewer123` | Read-only — map, reports, history |
 
 ---
 

@@ -45,10 +45,12 @@ jobs:
         # E501 = line too long (handled by editor config)
         # W503 = line break before binary operator (Black style)
         # E221 = multiple spaces before operator (alignment, intentional)
+        # E201 = whitespace after '(' (Black/alignment style)
+        # E202 = whitespace before ')' (Black/alignment style)
         run: |
           flake8 backend/app/ \
             --max-line-length=120 \
-            --extend-ignore=E501,W503,E402,E221 \
+            --extend-ignore=E501,W503,E402,E221,E201,E202 \
             --exclude=__pycache__,migrations
 
       - name: Run pytest
