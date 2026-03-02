@@ -13,7 +13,7 @@ import Footer from './components/Footer'
 import NotFound from './components/NotFound'
 import ScrollToTop from './components/ScrollToTop'
 
-/** Minimal hash/path-based 404: show NotFound for any path other than "/" */
+/** Minimal hash/path-based 404: show NotFound for any path other than "/" or the Vite base */
 function usePath() {
   const [path, setPath] = useState(() => window.location.pathname)
   useEffect(() => {
@@ -26,9 +26,11 @@ function usePath() {
 
 export default function App() {
   const path = usePath()
+  const base = import.meta.env.BASE_URL // '/' locally, '/Fleet-Manager-Demo/' on GitHub Pages
 
-  // Any path other than "/" or "/#..." shows 404
-  if (path !== '/' && path !== '') {
+  // Allow root, empty, or the Vite base path (e.g. /Fleet-Manager-Demo/)
+  const isRoot = path === '/' || path === '' || path === base || path === base.replace(/\/$/, '')
+  if (!isRoot) {
     return <NotFound />
   }
 

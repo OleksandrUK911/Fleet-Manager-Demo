@@ -44,10 +44,11 @@ jobs:
       - name: Lint — flake8
         # E501 = line too long (handled by editor config)
         # W503 = line break before binary operator (Black style)
+        # E221 = multiple spaces before operator (alignment, intentional)
         run: |
           flake8 backend/app/ \
             --max-line-length=120 \
-            --extend-ignore=E501,W503,E402 \
+            --extend-ignore=E501,W503,E402,E221 \
             --exclude=__pycache__,migrations
 
       - name: Run pytest
@@ -77,7 +78,7 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Build (production bundle)
         # CI=false prevents CRA from treating warnings as errors
