@@ -1,0 +1,40 @@
+# Dockerfile (root) — Fleet Manager Demo — Railway deployment
+#
+# Stage 1: Build the React admin SPA
+# Stage 2: Python FastAPI backend + built frontend served at /app/
+
+# ── Stage 1: Node — build admin frontend ─────────────────────────────────────
+FROM node:20-slim AS frontend-build
+
+WORKDIR /frontend
+COPY frontend/package*.json ./
+RUN npm ci --legacy-peer-deps
+
+COPY frontend/ ./
+ENV CI=false
+RUN npm run build
+
+# ── Stage 2: Python — FastAPI backend ────────────────────────────────────────
+FROM python:3.13-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+# Install Python dependencies
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy backend source
+COPY backend/ .
+
+# Copy built React app into the location FastAPI serves from /app/
+COPY --from=frontend-build /frontend/build ./static/frontend
+
+# Railway injects $PORT at runtime; default 8000 for local docker run
+EXPOSE 8000
+
+# Start generator in background, then start API
+CMD python -m app.generator &>/tmp/generator.log & \
+    uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000} --workers 1
