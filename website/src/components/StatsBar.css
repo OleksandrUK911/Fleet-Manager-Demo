@@ -1,0 +1,84 @@
+.stats { background: var(--clr-surface); }
+
+.stats__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4);
+}
+
+.stats__card {
+  background: var(--clr-surface2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6) var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-2);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.stats__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--clr-primary) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.stats__card:hover { border-color: var(--clr-primary); box-shadow: 0 0 32px rgba(25,118,210,.18); }
+.stats__card:hover::before { opacity: 0.06; }
+
+.stats__value {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  line-height: 1;
+}
+.stats__num {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--clr-primary-lt), var(--clr-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+.stats__unit {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+  color: var(--clr-primary-lt);
+  padding-bottom: 2px;
+}
+
+.stats__label {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--clr-text);
+}
+
+.stats__sub {
+  font-size: var(--text-xs);
+  color: var(--clr-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Tablet: 3 columns */
+@media (min-width: 640px) {
+  .stats__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Desktop: 6 columns */
+@media (min-width: 1024px) {
+  .stats__grid { grid-template-columns: repeat(6, 1fr); }
+  .stats__card { padding: var(--sp-8) var(--sp-4); }
+}

@@ -1,0 +1,21 @@
+# backend/.dockerignore — Files to exclude from the Docker build context
+
+# Virtual environment (not needed in Docker, deps installed via pip)
+.venv/
+venv/
+
+# Compiled Python files
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Local database (mounted as a volume in Docker, don't bake it into the image)
+fleet.db
+
+# Local environment files (secrets — use docker-compose environment instead)
+.env
+
+# Development tools
+.git/
+*.md

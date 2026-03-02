@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1976d2" />
+    <meta name="description" content="Fleet Manager — Real-time vehicle tracking dashboard built with FastAPI, React, and Leaflet." />
+    <meta name="keywords" content="fleet management, vehicle tracking, real-time map, FastAPI, React, Leaflet, GPS tracking" />
+
+    <!-- Open Graph (social sharing) -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:title"       content="Fleet Manager Demo" />
+    <meta property="og:description" content="Real-time vehicle tracking dashboard — FastAPI · React · Leaflet · SQLite/MySQL" />
+    <meta property="og:site_name"   content="Fleet Manager" />
+
+    <!-- Canonical URL — update to your real domain after deployment -->
+    <link rel="canonical" href="https://fleet.yourdomain.com/" />
+
+    <!-- PWA manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚛</text></svg>" />
+    <title>Fleet Manager</title>
+    <!-- Leaflet CSS must be loaded globally to ensure correct map tile rendering -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <!-- Roboto font for Material UI -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

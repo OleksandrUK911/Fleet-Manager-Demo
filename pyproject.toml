@@ -1,0 +1,45 @@
+[tool.black]
+line-length    = 120
+target-version = ["py311", "py312", "py313"]
+skip-string-normalization = false
+# Exclude generated/vendor files
+extend-exclude = '''
+/(
+  \.venv
+  | venv
+  | __pycache__
+  | \.git
+  | alembic/versions
+)/
+'''
+
+[tool.isort]
+profile       = "black"
+line_length   = 120
+known_first_party = ["app"]
+skip_glob     = [".venv/*", "venv/*", "alembic/versions/*"]
+
+[tool.flake8]
+# Note: flake8 does not read pyproject.toml natively; use setup.cfg or .flake8
+# This section is for documentation purposes — configure via .flake8 instead.
+
+[tool.pytest.ini_options]
+testpaths        = ["backend/tests"]
+pythonpath       = ["."]
+python_files     = ["test_*.py"]
+python_functions = ["test_*"]
+addopts          = "-v --tb=short"
+asyncio_mode     = "auto"
+
+[tool.coverage.run]
+source   = ["backend/app"]
+omit     = ["*/tests/*", "*/__pycache__/*", "*/alembic/*"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+exclude_lines = [
+  "pragma: no cover",
+  "if TYPE_CHECKING:",
+  "raise NotImplementedError",
+]

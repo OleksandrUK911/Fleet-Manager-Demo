@@ -1,0 +1,29 @@
+[Unit]
+Description=Fleet Manager FastAPI Backend
+After=network.target mysql.service
+
+[Service]
+# Change 'ubuntu' to your server username
+User=ubuntu
+Group=ubuntu
+
+# Change this to the absolute path of your backend directory
+WorkingDirectory=/var/www/fleet-manager-backend
+
+# Full path to gunicorn inside the virtual environment
+ExecStart=/var/www/fleet-manager-backend/venv/bin/gunicorn app.main:app \
+    --workers 3 \
+    --worker-class uvicorn.workers.UvicornWorker \
+    --bind 127.0.0.1:7767 \
+    --timeout 120 \
+    --access-logfile /var/log/fleet-manager/access.log \
+    --error-logfile /var/log/fleet-manager/error.log
+
+Restart=always
+RestartSec=5
+
+# Load environment variables from .env file
+EnvironmentFile=/var/www/fleet-manager-backend/.env
+
+[Install]
+WantedBy=multi-user.target

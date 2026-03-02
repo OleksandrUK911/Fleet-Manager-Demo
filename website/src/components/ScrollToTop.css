@@ -1,0 +1,58 @@
+/* ScrollToTop.css */
+
+.scroll-top {
+  position: fixed;
+  bottom: var(--sp-6, 1.5rem);
+  right: var(--sp-6, 1.5rem);
+  z-index: 900;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--clr-border, rgba(255,255,255,.12));
+  background: var(--clr-surface2, rgba(255,255,255,.08));
+  color: var(--clr-primary, #1976d2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Hidden by default */
+  opacity: 0;
+  transform: translateY(12px) scale(0.88);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease,
+              background 0.2s ease, border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.scroll-top--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.scroll-top:hover {
+  background: var(--clr-primary, #1976d2);
+  border-color: var(--clr-primary, #1976d2);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(25, 118, 210, 0.45);
+}
+
+.scroll-top:focus-visible {
+  outline: 2px solid var(--clr-primary, #1976d2);
+  outline-offset: 3px;
+}
+
+.scroll-top svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Shift left on very wide screens so it doesn't sit on a scrollbar */
+@media (min-width: 1400px) {
+  .scroll-top {
+    right: calc((100vw - 1280px) / 2 - 64px);
+  }
+}

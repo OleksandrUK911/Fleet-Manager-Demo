@@ -1,0 +1,69 @@
+# docker-compose.yml — Fleet Manager local Docker setup
+#
+# Services:
+#   api        — FastAPI backend on port 7767 (internal only)
+#   generator  — GPS data simulator (writes to shared SQLite DB)
+#   frontend   — React app + nginx proxy, accessible on http://localhost:3000
+#
+# Usage:
+#   docker compose up --build          # first run (builds images)
+#   docker compose up -d               # start in background
+#   docker compose down                # stop and remove containers
+#   docker compose logs -f api         # tail backend logs
+#   docker compose down -v             # stop + delete volumes (resets DB)
+
+services:
+
+  # ── FastAPI backend ─────────────────────────────────────────────────────────
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: fleet_api
+    restart: unless-stopped
+    environment:
+      # SQLite DB stored on the shared volume (mounted at /data)
+      DATABASE_URL: "sqlite:////data/fleet.db"
+    volumes:
+      - fleet_db:/data
+    ports:
+      - "7767:7767"   # also expose directly for dev/debugging
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:7767/api/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ── Data generator ──────────────────────────────────────────────────────────
+  generator:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: fleet_generator
+    restart: unless-stopped
+    command: ["python", "-m", "app.generator"]
+    environment:
+      DATABASE_URL: "sqlite:////data/fleet.db"
+    volumes:
+      - fleet_db:/data
+    depends_on:
+      api:
+        condition: service_healthy
+
+  # ── React frontend (nginx) ──────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: fleet_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"     # http://localhost:3000
+    depends_on:
+      - api
+
+# ── Named volume for the SQLite database ────────────────────────────────────
+volumes:
+  fleet_db:
+    name: fleet_manager_db

@@ -1,0 +1,14 @@
+[flake8]
+max-line-length = 120
+max-doc-length  = 120
+extend-ignore   = E203, W503, W504, E201, E221
+per-file-ignores =
+    backend/tests/*:E501
+exclude =
+    .venv,
+    venv,
+    __pycache__,
+    .git,
+    alembic/versions,
+    node_modules,
+    dist

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Fleet Manager Demo — Real-time vehicle tracking
+# https://github.com/yourusername/FleetManagerDemo

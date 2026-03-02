@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oleksandruk911.github.io/Fleet-Manager-Demo/sitemap.xml

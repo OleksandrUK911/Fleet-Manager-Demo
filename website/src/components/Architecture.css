@@ -1,0 +1,89 @@
+﻿.arch { background: var(--clr-surface); }
+
+/* CSS variables consumed by the SVG nodes */
+.arch__svg {
+  --arch-box-bg: rgba(8, 9, 26, 0.72);
+  --arch-text:   var(--clr-text);
+  --arch-sub:    var(--clr-text-muted);
+}
+
+/* SVG wrapper — full width, capped height */
+.arch__svg-wrap {
+  margin-bottom: var(--sp-10);
+  background: var(--clr-surface2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6) var(--sp-4);
+  overflow: hidden;
+}
+
+.arch__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 280px;
+}
+
+/* Node hover glow */
+.arch-node__rect {
+  transition: filter 0.25s ease;
+}
+.arch-node:hover .arch-node__rect {
+  filter: drop-shadow(0 0 12px currentColor);
+}
+
+/* Arrow animation — flowing dash for WebSocket line */
+.arch-arrow { stroke-linecap: round; }
+.arch-arrow--ws {
+  stroke-dasharray: 7 4;
+  animation: wsFlow 1.4s linear infinite;
+}
+@keyframes wsFlow {
+  to { stroke-dashoffset: -22; }
+}
+
+/* Freeze WS animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .arch-arrow--ws {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Arrow labels */
+.arch-arr-label {
+  font-size: 9px;
+  font-family: var(--font-mono, monospace);
+  text-anchor: middle;
+  dominant-baseline: auto;
+  user-select: none;
+}
+.arch-arr-label--top { dominant-baseline: auto; }
+.arch-arr-label--bot { dominant-baseline: hanging; }
+
+/* Legend */
+.arch__legend {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.arch__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--text-sm);
+  color: var(--clr-text-muted);
+}
+.arch__legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .arch__legend { flex-direction: row; flex-wrap: wrap; gap: var(--sp-6); }
+}

@@ -1,0 +1,37 @@
+# railway.toml — Railway deployment configuration
+# https://docs.railway.app/reference/config-as-code
+#
+# Deploys the Fleet Manager backend + admin SPA as a single Railway service.
+# The admin panel is served at /app/, the API at /api/.
+#
+# Setup:
+#   1. Go to https://railway.app → New Project → Deploy from GitHub repo
+#   2. Select this repo — Railway auto-detects this file
+#   3. Add environment variables (see below)
+#   4. Deploy — done!
+#
+# Required environment variables in Railway dashboard:
+#   SECRET_KEY         = any 32+ char random string
+#   DATABASE_URL       = sqlite:////data/fleet.db  (or a Railway MySQL addon URL)
+#   CORS_ORIGINS       = https://<your-railway-url>.up.railway.app
+#
+# Optional:
+#   GENERATOR_INTERVAL_SECS = 10
+#   POSITION_RETENTION_DAYS = 30
+
+[build]
+builder = "nixpacks"
+buildCommand = """
+npm --prefix frontend ci --legacy-peer-deps &&
+npm --prefix frontend run build &&
+mkdir -p backend/static/frontend &&
+cp -r frontend/build/. backend/static/frontend/
+"""
+
+[deploy]
+# Start GPS generator in background, then launch the API server
+startCommand = "cd backend && python -m app.generator &>/tmp/generator.log & uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3

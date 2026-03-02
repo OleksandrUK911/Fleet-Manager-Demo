@@ -1,0 +1,19 @@
+# frontend/.dockerignore — Files to exclude from the Docker build context
+
+# Development dependencies and build artifacts (re-installed in Docker)
+node_modules/
+build/
+.npm/
+
+# Local environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Source maps (not needed in Docker build)
+*.map
+
+# Development tools
+.git/
+*.md

@@ -1,0 +1,39 @@
+# deploy/fleet-generator.service
+#
+# systemd unit for the Fleet Manager data generator.
+# The generator script simulates vehicle GPS movements and writes positions
+# to the database every GENERATOR_INTERVAL_SECS seconds.
+#
+# Install (done automatically by setup-vps.sh; or manually):
+#   sudo cp deploy/fleet-generator.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now fleet-generator
+
+[Unit]
+Description=Fleet Manager Data Generator
+After=network.target fleet-backend.service
+Wants=fleet-backend.service
+
+[Service]
+Type=simple
+User=your-user
+WorkingDirectory=/path/to/app/backend
+
+# Load the same .env as the backend
+EnvironmentFile=/path/to/app/backend/.env
+
+# Override specific vars for the generator if needed:
+# Environment=GENERATOR_INTERVAL_SECS=10
+# Environment=GENERATOR_CITY=london
+
+ExecStart=/path/to/venv/bin/python -m app.generator
+
+Restart=on-failure
+RestartSec=10
+
+# Resource limits — generator is lightweight
+CPUQuota=10%
+MemoryMax=128M
+
+[Install]
+WantedBy=multi-user.target

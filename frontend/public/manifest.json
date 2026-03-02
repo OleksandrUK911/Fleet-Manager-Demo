@@ -1,0 +1,18 @@
+{
+  "short_name": "Fleet Manager",
+  "name": "Fleet Manager Demo",
+  "description": "Real-time vehicle tracking dashboard — FastAPI + React + Leaflet",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚛</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#1976d2",
+  "background_color": "#ffffff",
+  "categories": ["productivity", "navigation"],
+  "lang": "en"
+}
