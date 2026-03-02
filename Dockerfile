@@ -31,6 +31,8 @@ COPY backend/ .
 
 # Copy built React app into the location FastAPI serves from /app/
 COPY --from=frontend-build /frontend/build ./static/frontend
+# manifest.json must be accessible at /manifest.json (CRA PWA requirement)
+COPY --from=frontend-build /frontend/build/manifest.json ./static/frontend/manifest.json
 
 # Startup script (sh-compatible: no bash-isms like &>)
 COPY start.sh /start.sh

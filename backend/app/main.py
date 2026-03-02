@@ -304,6 +304,12 @@ if _FRONTEND_BUILD.exists():
         name="admin-static",
     )
 
+    @app.get("/manifest.json", include_in_schema=False)
+    @app.get("/app/manifest.json", include_in_schema=False)
+    async def _serve_manifest():
+        """Serve CRA PWA manifest from root and /app/ path."""
+        return _FileResponse(_FRONTEND_BUILD / "manifest.json", media_type="application/manifest+json")
+
     @app.get("/app", include_in_schema=False)
     @app.get("/app/", include_in_schema=False)
     async def _serve_admin_root():

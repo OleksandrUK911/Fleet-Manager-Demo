@@ -165,17 +165,6 @@ function Dashboard({ darkMode, setDarkMode }) {
 
   useFleetWebSocket({ onUpdate: handleWsUpdate, onStatusChange: setWsOnline });
 
-  // ── Fallback HTTP polling when WebSocket is unavailable ──────────────────
-  // If WS stays offline, poll vehicles via HTTP every 10 s so the map
-  // doesn't freeze. Cancelled automatically when WS reconnects.
-  useEffect(() => {
-    if (wsOnline) return;                           // WS is fine — no need
-    const id = setInterval(() => {
-      loadVehicles();                               // fetch + stats in one call
-    }, 10_000);
-    return () => clearInterval(id);
-  }, [wsOnline, loadVehicles]);
-
   // ── HTTP: initial load + 60 s stats refresh ────────────────────────────────
   const loadVehicles = useCallback(async () => {
     try {
@@ -201,6 +190,17 @@ function Dashboard({ darkMode, setDarkMode }) {
       setLoading(false);
     }
   }, []);
+
+  // ── Fallback HTTP polling when WebSocket is unavailable ──────────────────
+  // If WS stays offline, poll vehicles via HTTP every 10 s so the map
+  // doesn't freeze. Cancelled automatically when WS reconnects.
+  useEffect(() => {
+    if (wsOnline) return;                           // WS is fine — no need
+    const id = setInterval(() => {
+      loadVehicles();                               // fetch + stats in one call
+    }, 10_000);
+    return () => clearInterval(id);
+  }, [wsOnline, loadVehicles]);
 
   const loadStats = useCallback(async () => {
     try {
