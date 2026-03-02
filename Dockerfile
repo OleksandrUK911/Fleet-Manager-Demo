@@ -8,7 +8,7 @@ FROM node:20-slim AS frontend-build
 
 WORKDIR /frontend
 COPY frontend/package*.json ./
-RUN npm ci --legacy-peer-deps
+RUN npm install --legacy-peer-deps
 
 COPY frontend/ ./
 ENV CI=false
