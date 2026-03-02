@@ -1,6 +1,6 @@
 import './Hero.css'
 
-const DEMO_URL   = import.meta.env.VITE_DEMO_URL   || 'http://fleet-manager-demo.skakun-ml.com/app/'
+const DEMO_URL   = import.meta.env.VITE_DEMO_URL   || 'https://fleet-manager-demo-production.up.railway.app/app'
 const GITHUB_URL = import.meta.env.VITE_GITHUB_URL || 'https://github.com/OleksandrUK911/Fleet-Manager-Demo'
 const GITHUB_STARS_BADGE = 'https://img.shields.io/github/stars/Fleet-Manager-Demo/fleet-manager-demo?style=social'
 const CI_BADGE = 'https://github.com/Fleet-Manager-Demo/fleet-manager-demo/actions/workflows/ci.yml/badge.svg'

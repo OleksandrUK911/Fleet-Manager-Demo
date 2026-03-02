@@ -13,7 +13,7 @@ const NAV_LINKS = [
 ]
 
 const GITHUB_URL = import.meta.env.VITE_GITHUB_URL || 'https://github.com/OleksandrUK911/Fleet-Manager-Demo'
-const DEMO_URL   = import.meta.env.VITE_DEMO_URL   || 'http://fleet-manager-demo.skakun-ml.com/app/'
+const DEMO_URL   = import.meta.env.VITE_DEMO_URL   || 'https://fleet-manager-demo-production.up.railway.app/app'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)

@@ -14,8 +14,8 @@
 | | URL |
 |---|---|
 | 🌐 **Landing page** | [oleksandruk911.github.io/Fleet-Manager-Demo](https://oleksandruk911.github.io/Fleet-Manager-Demo/) |
-| 🚀 **Live Admin Panel** | [fleet-manager-demo.up.railway.app/app](https://fleet-manager-demo.up.railway.app/app) |
-| 📖 **API Docs** (Swagger) | [fleet-manager-demo.up.railway.app/api/docs](https://fleet-manager-demo.up.railway.app/api/docs) |
+| 🚀 **Live Admin Panel** | [fleet-manager-demo-production.up.railway.app/app](https://fleet-manager-demo-production.up.railway.app/app) |
+| 📖 **API Docs** (Swagger) | [fleet-manager-demo-production.up.railway.app/api/docs](https://fleet-manager-demo-production.up.railway.app/api/docs) |
 | 💻 **Source Code** | [github.com/OleksandrUK911/Fleet-Manager-Demo](https://github.com/OleksandrUK911/Fleet-Manager-Demo) |
 
 ## 🔑 Demo Credentials

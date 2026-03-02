@@ -57,9 +57,9 @@ jobs:
           VITE_BASE: /Fleet-Manager-Demo/
           # Optional: point "Live Demo" button to your Railway deployment
           # Set this in: GitHub repo → Settings → Variables → Actions → VITE_DEMO_URL
-          VITE_DEMO_URL: ${{ vars.VITE_DEMO_URL || 'https://github.com/OleksandrUK911/Fleet-Manager-Demo' }}
+          VITE_DEMO_URL: ${{ vars.VITE_DEMO_URL || 'https://fleet-manager-demo-production.up.railway.app/app' }}
           VITE_GITHUB_URL: https://github.com/OleksandrUK911/Fleet-Manager-Demo
-          VITE_SWAGGER_URL: ${{ vars.VITE_SWAGGER_URL || '' }}
+          VITE_SWAGGER_URL: ${{ vars.VITE_SWAGGER_URL || 'https://fleet-manager-demo-production.up.railway.app/api/docs' }}
         run: npm run build
 
       - name: Upload Pages artifact
