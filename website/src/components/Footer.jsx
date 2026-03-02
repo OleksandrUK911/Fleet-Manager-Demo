@@ -66,7 +66,7 @@ export default function Footer() {
           <h4 className="footer__nav-heading">Built with</h4>
           <ul className="footer__tech-list">
             {[
-              'Python 3.13 · FastAPI 0.133',
+              'Python 3.13 · FastAPI 0.111',
               'React 18 · Material UI 5',
               'Leaflet 1.9 · Recharts',
               'SQLite · Alembic',

@@ -2,15 +2,15 @@ import './Hero.css'
 
 const DEMO_URL   = import.meta.env.VITE_DEMO_URL   || 'https://fleet-manager-demo-production-47c1.up.railway.app/app'
 const GITHUB_URL = import.meta.env.VITE_GITHUB_URL || 'https://github.com/OleksandrUK911/Fleet-Manager-Demo'
-const GITHUB_STARS_BADGE = 'https://img.shields.io/github/stars/Fleet-Manager-Demo/fleet-manager-demo?style=social'
-const CI_BADGE = 'https://github.com/Fleet-Manager-Demo/fleet-manager-demo/actions/workflows/ci.yml/badge.svg'
+const GITHUB_STARS_BADGE = 'https://img.shields.io/github/stars/OleksandrUK911/Fleet-Manager-Demo?style=social'
+const CI_BADGE = 'https://github.com/OleksandrUK911/Fleet-Manager-Demo/actions/workflows/ci.yml/badge.svg'
 
 const TECH_BADGES = ['FastAPI', 'React 18', 'Leaflet', 'WebSocket', 'Material UI', 'SQLite']
 
 const STATS = [
   { value: '5',   label: 'Live vehicles' },
   { value: '<1s', label: 'WS latency'    },
-  { value: '62', label: 'Tests passing' },
+  { value: '74',  label: 'Tests passing' },
   { value: '4',   label: 'UK cities'     },
 ]
 
@@ -116,7 +116,7 @@ function DashboardMock() {
         <span className="mock-dot red"   />
         <span className="mock-dot amber" />
         <span className="mock-dot green" />
-        <span className="mock-url">fleet-manager-demo.skakun-ml.com</span>
+        <span className="mock-url">fleet-manager-demo-production-47c1.up.railway.app</span>
       </div>
       <div className="mock-browser__body">
         {/* KPI row */}

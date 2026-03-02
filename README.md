@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/OleksandrUK911/Fleet-Manager-Demo/actions/workflows/ci.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python 3.12](https://img.shields.io/badge/Python-3.12-3776ab?logo=python&logoColor=white)](https://www.python.org/)
+[![Python 3.13](https://img.shields.io/badge/Python-3.13-3776ab?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![React 18](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Tests](https://img.shields.io/badge/tests-74%20passed-brightgreen)](backend/tests/)
@@ -88,7 +88,7 @@
 
 ### 🔧 Developer Experience
 - **Docker Compose** — One-command local setup (backend + generator + frontend + nginx)
-- **pytest test suite** — 62 tests covering auth, CRUD, heatmap and geofence endpoints (100% passing)
+- **pytest test suite** — 74 tests covering auth, CRUD, heatmap and geofence endpoints (100% passing)
 - **GitHub Actions CI** — Lint (flake8) + pytest + npm build on every push and PR
 - **Pre-commit hooks** — black, isort, flake8 for Python; eslint for JS/JSX
 - **Dark mode** — Full MUI dark theme toggle in the AppBar
@@ -106,7 +106,7 @@
 | ![Dashboard](docs/screenshots/dashboard.png) | **Live Dashboard** — Leaflet map with pulsing markers, KPI bar, vehicle sidebar and WebSocket live-feed indicator |
 | ![Dark Mode](docs/screenshots/dark-mode.png) | **Dark Mode** — Full MUI dark theme; map tiles switch to CartoDB Dark automatically |
 | ![Vehicle Detail](docs/screenshots/vehicle-detail.png) | **Vehicle Detail** — Speed AreaChart (24 h), operator notes, route replay with play/pause/speed controls |
-| ![Admin Panel](docs/screenshots/admin-panel.png) | **Admin Panel** — Sortable CRUD table with bulk-select toolbar, add/edit/delete dialogs |
+| ![Admin Panel](docs/screenshots/admin-panel.png) | **Admin Panel** — Two-tab UI: Overview (KPI cards, charts, top-5 vehicles) + Fleet Management (sortable CRUD table, bulk toolbar, add/edit/delete) |
 | ![Reports Page](docs/screenshots/reports.png) | **Reports Page** — Date-range picker → speed chart + position table + CSV/PDF export |
 
 <details>
@@ -114,7 +114,7 @@
 
 1. Start the app locally: `.\ start_local.ps1`
 2. Open `http://localhost:3000` in your browser
-3. Log in with `admin / admin123`
+3. Log in with `admin / fleet2024`
 4. Capture each screen at **1280 × 800** (use DevTools device toolbar)
 5. Save as WebP: `cwebp -q 85 screenshot.png -o docs/screenshots/dashboard.webp`
 6. Replace the `.png` links in the table above with `.webp`
@@ -515,7 +515,7 @@ make help          # List all available targets
 make install       # pip install + npm ci for all sub-projects
 make install-dev   # + black, isort, flake8, pre-commit; installs git hooks
 
-make test          # pytest (62 tests)
+make test          # pytest (74 tests)
 make test-cov      # pytest + coverage report
 make lint          # flake8 on backend/
 make format        # black + isort on backend/

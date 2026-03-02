@@ -2,7 +2,7 @@ import useScrollReveal from '../hooks/useScrollReveal'
 import './StatsBar.css'
 
 const STATS = [
-  { value: '62',      unit: '',     label: 'Tests passing',     sub: 'pytest + httpx · CI on every push' },
+  { value: '74',      unit: '',     label: 'Tests passing',     sub: 'pytest + httpx · CI on every push' },
   { value: '12',      unit: '',     label: 'Features built',    sub: 'From live map to PDF export' },
   { value: '<100',    unit: 'ms',   label: 'API response',      sub: 'Median on SQLite dev setup' },
   { value: '4',       unit: '',     label: 'System layers',     sub: 'Generator · DB · FastAPI · React' },
